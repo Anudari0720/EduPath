@@ -2,6 +2,14 @@
 <html lang="mn">
 <head>
 <meta charset="utf-8">
+<title>EduPath</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2230%22%20fill%3D%22%2313213a%22/%3E%3Cpath%20d%3D%22M0%2084%20L28%2066%20L46%2076%20L70%2058%20L94%2072%20L120%2062%20L120%2090%20Q120%20120%2090%20120%20L30%20120%20Q0%20120%200%2090%20Z%22%20fill%3D%22%233b5bfd%22/%3E%3Cpath%20d%3D%22M34%20120%20L57%2074%20L63%2074%20L86%20120%20Z%22%20fill%3D%22%23ffffff%22/%3E%3Cpath%20d%3D%22M60%2084%20L60%2091%20M60%2099%20L60%20110%22%20stroke%3D%22%23f5a623%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M60%2014%20L64.5%2030.5%20L81%2035%20L64.5%2039.5%20L60%2056%20L55.5%2039.5%20L39%2035%20L55.5%2030.5%20Z%22%20fill%3D%22%23f5a623%22/%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#13213a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="EduPath">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -78,6 +86,8 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .hero { border-radius: 24px; padding: 30px 26px; display: grid; gap: 14px; color: #ffffff;
   background: radial-gradient(120% 140% at 100% 0%, #13a8b8 0%, transparent 55%), linear-gradient(140deg, #1a2a6c 0%, #3b5bfd 100%); }
 .hero h1 { font-size: clamp(2.2rem, 9vw, 3.2rem); color: #ffffff; }
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand .logo { width: 1.25em; height: 1.25em; flex: none; filter: drop-shadow(0 4px 10px rgba(10,20,50,.35)); }
 .hero p { color: #dfe6ff; max-width: 34ch; }
 .hero .btn { background: var(--accent); color: #1b1300; justify-self: start; }
 .badge { display: inline-flex; gap: 6px; align-items: center; background: rgba(255,255,255,.16); color: #ffffff; border-radius: 999px; padding: 5px 12px; font-size: 0.82rem; font-weight: 700; justify-self: start; }
@@ -183,7 +193,7 @@ input[type="date"] { font: inherit; padding: 8px 10px; border-radius: 10px; bord
   <section id="screen-start" class="wrap">
     <div class="hero">
       <span class="badge">🧭 Ахлах ангийн сурагчдад</span>
-      <h1>EduPath</h1>
+      <h1 class="brand"><svg class="logo" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="#13213a"/><path d="M0 84 L28 66 L46 76 L70 58 L94 72 L120 62 L120 90 Q120 120 90 120 L30 120 Q0 120 0 90 Z" fill="#3b5bfd"/><path d="M34 120 L57 74 L63 74 L86 120 Z" fill="#ffffff"/><path d="M60 84 L60 91 M60 99 L60 110" stroke="#f5a623" stroke-width="3" stroke-linecap="round"/><path d="M60 14 L64.5 30.5 L81 35 L64.5 39.5 L60 56 L55.5 39.5 L39 35 L55.5 30.5 Z" fill="#f5a623"/></svg>EduPath</h1>
       <p>Өөрийгөө таньж, зөв мэргэжлээ олж, ЭЕШ-ийн оноогоороо орох сургууль, тэтгэлгээ мэдээрэй.</p>
       <button class="btn" id="start-btn">🚀 Эхлэх</button>
       <p class="hero-meta">⏱ <span id="q-total"></span> асуулт · ойролцоогоор 5 минут</p>
