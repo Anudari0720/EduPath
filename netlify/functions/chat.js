@@ -4,9 +4,9 @@
 exports.handler = async (event) => {
   // Хөтөчөөр нээвэл аль хувилбар ажиллаж байгааг харуулна
   if (event.httpMethod !== "POST") {
-    return { statusCode: 200, headers: { "Content-Type": "application/json; charset=utf-8" }, body: JSON.stringify({ version: "chat v3", key: Boolean(process.env.GEMINI_API_KEY) }) };
+    return { statusCode: 200, headers: { "Content-Type": "application/json; charset=utf-8" }, body: JSON.stringify({ version: "chat v4", key: Boolean(process.env.GEMINI_API_KEY) }) };
   }
-  console.log("chat v3 эхэллээ");
+  console.log("chat v4 эхэллээ");
 
   const key = process.env.GEMINI_API_KEY;
   if (!key) {
@@ -32,14 +32,14 @@ exports.handler = async (event) => {
 
   // Нэг загвар удаан/ажиллахгүй бол дараагийнхыг оролдоно (Netlify 30 секундэд тасалдаг)
   const models = [
-    { name: process.env.GEMINI_MODEL || "gemini-3.8-flash", wait: 10000 },
-    { name: "gemini-2.5-flash", wait: 15000 },
+    { name: process.env.GEMINI_MODEL || "gemini-3.5-flash-lite", wait: 12000 },  // хамгийн хурдан
+    { name: "gemini-3.6-flash", wait: 12000 },                                  // нөөц
   ];
   const systemText = system + "\nХариултаа товч, 3-5 өгүүлбэрт багтаа.";
   let lastError = "AI хариулсангүй";
 
   for (const m of models) {
-    const thinkingConfig = m.name.startsWith("gemini-2") ? { thinkingBudget: 0 } : { thinkingLevel: "low" };
+    const thinkingConfig = { thinkingLevel: "minimal" };   // бараг бодохгүй, шууд хариулна
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), m.wait);
     const started = Date.now();
