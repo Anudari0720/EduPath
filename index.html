@@ -797,6 +797,7 @@ function simpleReply(message) {
   const q = message.toLowerCase(), r = result;
   const found = PROGRAMS.filter(p => q.includes(p.name.toLowerCase())).slice(0, 4);
   if (found.length) return found.map(p => `• ${p.name} — ${p.uni}\n  ЭЕШ: ${p.e1.join("/")} ${p.t1}+, ${p.e2.join("/")} ${p.t2}+`).join("\n");
+  if (/нойр|унт|сэрээд/.test(q)) return "Өдөр бүр нэг цагтаа унтаж, 7-9 цаг нойрсоорой. Унтахаас 1 цагийн өмнө утсаа тавиад, орой кофе бүү уугаарай.";
   if (/стресс|сандар|ядар|айж/.test(q)) return "4 секунд амьсгал аваад, 4 секунд барьж, 6 секунд гаргаарай. \"Стресс\" хэсэгт танд тохирсон зөвлөгөө бий.";
   if (/тэтгэлэг|хөнгөлөлт/.test(q)) return "\"Сургууль\" хэсэгт ЭЕШ-д авах оноогоо оруулбал тэтгэлэгтэй хөтөлбөрүүд гарна.";
   if (/хуваарь|төлөвлөгөө|цаг/.test(q)) return `Та өдөрт ${r.hours} цаг гаргаж чадна. 7 хоногийн хуваарь "Хуваарь" хэсэгт бий.`;
@@ -843,9 +844,9 @@ async function sendChat(message) {
     turns.push({ role: "assistant", content: data.text });
   } catch (e) {
     // Интернет, сервер эсвэл түлхүүрийн асуудал гарвал энгийн бот хариулна
+    // AI-г бүр мөсөн унтраахгүй: дараагийн асуултад дахин оролдоно
     turns.pop();
-    aiOn = false;
-    $("chat-mode").textContent = "Энгийн горим (AI холбогдсонгүй)";
+    $("chat-mode").textContent = "AI түр холбогдсонгүй, дахин асууж үзээрэй";
     bubble.textContent = simpleReply(message);
   } finally {
     $("chat-send").disabled = false;
